@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "答案圈",
+    "usingComponents": {
+        "nav": "/components/nav/nav",
+        "w-back-top": "/components/w-back-top/w-back-top"
+    }
+}

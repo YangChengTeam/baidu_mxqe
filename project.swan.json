@@ -1,0 +1,22 @@
+{
+    "appid": "23481457",
+    "compilation-args": {
+        "common": {
+            "enhance": true
+        }
+    },
+    "host": "baiduboxapp",
+    "preview": {
+        "packageId": 1017580
+    },
+    "projectname": "baidu_mxqe",
+    "setting": {
+        "urlCheck": false
+    },
+    "swan": {
+        "baiduboxapp": {
+            "extensionJsVersion": "1.20.6",
+            "swanJsVersion": "3.250.33"
+        }
+    }
+}

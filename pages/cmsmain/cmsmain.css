@@ -1,0 +1,267 @@
+@import "../../bdParse/bdParse/bdParse.css";
+
+.g-h1 {
+    width: 100%;
+    height: auto;
+    line-height: 60rpx;
+    font-size: 42rpx;
+    font-weight: bold;
+    color: #000;
+    padding: 25rpx 30rpx 0;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+}
+
+.g-h2 {
+    width: 100%;
+    height: auto;
+    font-size: 28rpx;
+    font-weight: normal;
+    color: #000;
+    margin: 30rpx 0 0;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.g-h2 .u-t1 {
+    width: auto;
+    display: block;
+    overflow: hidden;
+}
+
+.g-h2 .u-t2 {
+    width: auto;
+    color: #888;
+    margin: 0 0 0 30rpx;
+    display: block;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+}
+
+.ellipsisImage {
+    width: auto;
+    height: auto;
+}
+
+.ellipsis {
+    height: 1173rpx;
+    opacity: 0.75;
+}
+
+.g-skeleton {
+    width: 100%;
+    height: 750px;
+}
+
+.unellipsis {
+    height: auto;
+    opacity: 1;
+}
+
+.g-main-box {
+    width: 100%;
+    line-height: 50rpx;
+    font-size: 30rpx;
+    font-weight: normal;
+    color: #000;
+    padding: 0 30rpx 40rpx;
+    box-sizing: border-box;
+    margin: 10rpx 0 0 0;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    text-align: justify;
+}
+
+.g-main-box .bdParse-p {
+    width: 100%;
+    height: auto;
+    line-height: 56rpx;
+    font-size: 32rpx;
+    color: #000;
+    margin: 30rpx 0 0;
+    display: block;
+    overflow: hidden;
+}
+
+.g-main-box .u-bg {
+    width: 100%;
+    height: 200rpx;
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: -webkit-gradient(linear,
+            left top,
+            left bottom,
+            color-stop(0, rgba(255, 255, 255, 0)),
+            color-stop(1, rgba(255, 255, 255, 1)));
+    /*谷歌*/
+}
+
+.g-main-box .u-bg-ellipsis {
+    width: 100%;
+    height: 5rpx;
+}
+
+.g-recomd-box {
+    width: 100%;
+    height: auto;
+    /* padding: 0 40rpx 40rpx; */
+    box-sizing: border-box;
+    margin: 30rpx 0 0;
+    display: block;
+    overflow: hidden;
+}
+
+.g-recomd-box .u-line {
+    width: 100%;
+    height: 15rpx;
+    display: block;
+    overflow: hidden;
+    background-color: #F5F5F5;
+}
+
+.g-recomd-box .u-h3 {
+    width: 100%;
+    height: auto;
+    margin-top: 28rpx;
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+}
+
+.g-recomd-box .u-h4 {
+    width: 100%;
+    height: auto;
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 60rpx;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+}
+
+.g-recomd-box .m-cont {
+    width: 100%;
+    height: auto;
+    margin: 10rpx 0 10rpx 0;
+    /* display: -webkit-box; */
+    display: inline;
+    overflow: hidden;
+    /* position: relative; */
+}
+
+.g-recomd-box .m-cont .m-imag {
+    width: 100%;
+    height: auto;
+    margin: 10rpx 0 45rpx 0;
+    /* display: -webkit-box; */
+    display: flex;
+    overflow: hidden;
+    /* position: relative; */
+    padding: 0 28rpx 0 14rpx;
+    box-sizing: border-box;
+}
+
+
+.g-recomd-box .m-cont image {
+    width: 223rpx;
+    height: 158rpx;
+    display: block;
+    overflow: hidden;
+    margin: 0 0 0 14rpx;
+    flex: 1;
+}
+
+.g-recomd-box .m-cont text {
+    width: auto;
+    height: auto;
+    max-height: 150rpx;
+    padding: 0 0 0 35rpx;
+    display: block;
+    overflow: hidden;
+    margin: 25rpx 0 25rpx 0;
+    /* position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    text-align: justify; */
+}
+
+.ad-container {
+    width: 100%;
+    height: auto;
+}
+
+.g-main-btn-ellipsis {
+    width: 100%;
+    height: 1rpx;
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.g-main-btn {
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 36rpx;
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.g-main-btn .u-icon {
+    width: 14rpx;
+    height: 14rpx;
+    border-right: 4rpx solid #bbb;
+    border-bottom: 4rpx solid #bbb;
+    transform: rotate(45deg);
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 10rpx;
+    margin: 0 0 0 80rpx;
+}
+
+/* .g-main-btn.f-hover .u-icon {
+    transform: rotate(-135deg);
+    top: 20rpx;
+} */
+/* .interaction-cutLine {
+    height: 14.49rpx;
+    background-color: #F5F5F5;
+}
+.interaction-component {
+    flex: 1;
+    position: relative;
+    min-height: 100%;
+} */
+
+
+view {
+    user-select:text !important;
+    -moz-user-select:text !important;
+    -webkit-user-select:text !important;
+}

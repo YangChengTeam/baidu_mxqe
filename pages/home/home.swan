@@ -1,0 +1,27 @@
+<nav pageName="{{pageName}}"></nav>
+
+<view class="g-swiper-box">
+	<swiper autoplay="true" indicator-color="#fff" indicator-active-color="#f00b7e" duration="{{switchDuration}}"
+		interval="{{autoPlayInterval}}" autoplay="{{switchAutoPlayStatus}}" indicator-dots="{{switchIndicateStatus}}"
+		vertical="false" circular="true" current="0" bind:change="swiperChange">
+		<block s-for="item in itemBanners">
+			<swiper-item bindtap='gotomain' data-item="{{item}}" class="m-swiper-cont">
+				<view class="u-swiper-li">
+					<image src="{{item.titlepic}}"></image>
+					<text>{{item.title}}</text>
+				</view>
+			</swiper-item>
+		</block>
+	</swiper>
+</view>
+
+<view class="g-main-list">
+	<block s-for-index="idx"s-for="{{itemNews}}">
+		<view class="m-list-cont"   data-item="{{item}}" catchtap='gotomain' >
+			<image src="{{item.titlepic}}}"></image>
+			<text>{{item.title}}}</text>
+		</view>
+	</block>
+</view>
+<view class="u-loading-text">{{loading}}</view>
+<w-back-top bindtap="onBackTop" s-if="{{showBackTop}}" />

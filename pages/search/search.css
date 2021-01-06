@@ -1,0 +1,88 @@
+.g-search-bigbox {
+    width: 100%;
+    height: auto;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    display: -webkit-box;
+    overflow: hidden;
+}
+.g-search-bigbox .g-search-box {
+    width: auto;
+    height: auto;
+    margin: 18rpx 0 0;
+    background: #f8f8f8;
+    border-radius: 130rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+}
+.g-search-bigbox .g-search-box .u-icon {
+    width: 34rpx;
+    height: 32rpx;
+    margin: 24rpx 20rpx 0 20rpx;
+    display: block;
+    overflow: hidden;
+}
+.g-search-bigbox .g-search-box input {
+    width: auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    font-weight: normal;
+    color: #333;
+    display: block;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+}
+.g-search-bigbox .u-search-btn {
+    width: auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 36rpx;
+    font-weight: normal;
+    color: #333;
+    margin: 18rpx 0 0 30rpx;
+    display: block;
+    overflow: hidden;
+}
+
+.g-hot-search {
+    width: 100%;
+    height: auto;
+    margin: 50rpx 0 0;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+}
+.g-hot-search .u-h3 {
+    width: 100%;
+    height: auto;
+    font-size: 38rpx;
+    font-weight: normal;
+    color: #333;
+    display: block;
+    overflow: hidden;
+}
+.g-hot-search .m-cont {
+    width: 100%;
+    height: auto;
+    margin: 10rpx 0 0;
+    display: block;
+    overflow: hidden;
+}
+.g-hot-search .m-cont .u-link {
+    width: auto;
+    height: 74rpx;
+    line-height: 74rpx;
+    font-size: 32rpx;
+    font-weight: normal;
+    color: #333;
+    padding: 0 30rpx;
+    float: left;
+    margin: 20rpx 30rpx 0 0;
+    display: inline;
+    overflow: hidden;
+    background: #f5f5f5;
+    border-radius: 50rpx;
+}

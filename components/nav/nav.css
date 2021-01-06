@@ -1,0 +1,60 @@
+.g-search-box {
+    width: 670rpx;
+    height: auto;
+    margin: 18rpx auto 0;
+    background: #f8f8f8;
+    border-radius: 130rpx;
+    display: -webkit-box;
+    overflow: hidden;
+}
+.g-search-box .u-icon {
+    width: 34rpx;
+    height: 32rpx;
+    margin: 24rpx 20rpx 0 20rpx;
+    display: block;
+    overflow: hidden;
+}
+.g-search-box input {
+    width: auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    font-weight: normal;
+    display: block;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+}
+
+.g-nav-box {
+    width: 100%;
+    height: auto;
+    padding: 30rpx 0 0;
+    box-sizing: border-box;
+    display: flex;
+    overflow: hidden; background: #fff; position: relative; z-index: 10;
+}
+.g-nav-box .u-nav-btn {
+    width: auto;
+    height: auto;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    flex: 1;
+}
+.g-nav-box .u-nav-btn text {
+    width: auto;
+    height: 54rpx;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    font-weight: normal;
+    color: #333;
+    border-bottom: 4rpx solid #fff;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+}
+.g-nav-box .u-nav-btn.f-hover text {
+    border-color: #ec0077;
+    color: #ec0077;
+    font-weight: bold;
+}

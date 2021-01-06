@@ -1,0 +1,257 @@
+.g-search-box {
+    width: 670rpx;
+    height: auto;
+    margin: 18rpx auto 0;
+    background: #f8f8f8;
+    border-radius: 130rpx;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.g-search-box .u-icon {
+    width: 34rpx;
+    height: 32rpx;
+    margin: 24rpx 20rpx 0 20rpx;
+    display: block;
+    overflow: hidden;
+}
+
+.g-search-box input {
+    width: auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    font-weight: normal;
+    color: #333;
+    display: block;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+}
+
+.g-nav-box {
+    width: 100%;
+    height: auto;
+    padding: 30rpx 0 0;
+    box-sizing: border-box;
+    display: flex;
+    overflow: hidden;
+}
+
+.g-nav-box .u-nav-btn {
+    width: auto;
+    height: auto;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    flex: 1;
+}
+
+.g-nav-box .u-nav-btn text {
+    width: auto;
+    height: 54rpx;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    font-weight: normal;
+    color: #333;
+    border-bottom: 4rpx solid #fff;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.g-nav-box .u-nav-btn.f-hover text {
+    border-color: #ec0077;
+    color: #ec0077;
+    font-weight: bold;
+}
+
+.g-main-list {
+    width: 100%;
+    height: auto;
+    margin: 0 0 0;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.g-filter {
+    width: 100%;
+    margin: 10rpx 0;
+    height: 55rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.u-line {
+    width: 100%;
+    margin: 10rpx 0;
+    height: 3rpx;
+    display: block;
+    background-color: #F5F5F5;
+    position: relative;
+}
+
+
+
+.g-filter .m-filter {
+    width: 33%;
+    text-align: center;
+}
+
+.g-filter .m-filter .m-filter-image {
+    width: 24rpx;
+    height: 24rpx;
+    overflow: hidden;
+}
+
+.g-filter .m-filter .m-filter-name {
+    font-size: 26rpx;
+    color: #333;
+}
+
+
+.g-main-list .m-list-cont {
+    width: 100%;
+    height: auto;
+    margin: 15rpx 0 0 30rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.g-main-list .m-list-cont .m-image {
+    width: 210rpx;
+    height: 260rpx;
+    overflow: hidden;
+}
+
+.g-main-list .m-list-cont .m-text {
+    width: 70%;
+    height: 260rpx;
+    overflow: hidden;
+}
+
+.g-main-list .m-list-cont .m-text .m-title {
+    width: auto;
+    height: 85rpx;
+    line-height: 43rpx;
+    font-size: 35rpx;
+    color: #333;
+    margin: 10rpx 35rpx 0 15rpx;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.g-main-list .m-list-cont .m-text .m-time {
+    width: auto;
+    height: 38rpx;
+    line-height: 38rpx;
+    font-size: 27rpx;
+    font-weight: normal;
+    color: #A8A8A8;
+    margin: 10rpx 35rpx 0 15rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+.g-main-list .m-list-cont .m-text .m-desp {
+    width: auto;
+    height: 70rpx;
+    line-height: 38rpx;
+    font-size: 27rpx;
+    font-weight: normal;
+    color: #A8A8A8;
+    margin: 20rpx 45rpx 0 15rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+.u-loading-text {
+    width: 100%;
+    height: auto;
+    padding: 30rpx 0;
+    text-align: center;
+    font-size: 28rpx;
+    font-weight: normal;
+    color: #888;
+    display: flex;
+    overflow: hidden;
+}
+
+
+
+/*修改*/
+.g-fixed-nav {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 120;
+}
+
+.g-filter {
+    background: #fff;
+    margin: 0;
+    padding: 10rpx 0;
+    position: relative;
+    z-index: 10;
+}
+
+.navFloat {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 25rpx 31rpx;
+    z-index: 10;
+    background: #fff;
+}
+
+.navFloat .u-btn {
+    padding: 8rpx 0 8rpx 0;
+    margin: 0 7rpx 16rpx 7rpx ;
+    width: 155rpx;
+    height: 50rpx;
+    line-height: 45rpx;
+    font-size: 26rpx;
+    font-weight: normal;
+    color: #333;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    text-align: center;
+    line-height: 40rpx;
+    border-style: solid;
+    border-width: 1rpx;
+    border-radius:4px;
+    border-color: #DDDDDD;
+}
+
+.br {
+    color: royalblue;
+}
+
+.u-black-bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.g-main-list {
+    padding-top: 140rpx;
+}
