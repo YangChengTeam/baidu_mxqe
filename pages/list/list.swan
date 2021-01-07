@@ -1,31 +1,31 @@
 <view class="g-fixed-nav">
-    <nav pageName="{{pageName}}" keyword="{{keyword}}" pageNumber="{{pageNumber}}" bindsendParentSearch="receiveData"></nav>
+    <nav pageName="{{pageName}}" keyword="{{keyword}}" pageNumber="{{pageNumber}}" bindsendParentSearch="receiveData">
+    </nav>
     <view class="g-filter">
-        <view class="m-filter" bindtap="showScreen"  data-index="0">
-        <text class="m-filter-name">年级</text>
-        <image class="m-filter-image" src="../../images/array_down.png"></image>
+        <view class="m-filter" bindtap="showScreen" data-index="0">
+            <text class="m-filter-name">{{filter0}}</text>
+            <image class="m-filter-image" src="../../images/array_down.png"></image>
         </view>
-        <view class="m-filter"  bindtap="showScreen" data-index="1">
-        <text class="m-filter-name">上下册</text>
-        <image class="m-filter-image" src="../../images/array_down.png"></image>
+        <view class="m-filter" bindtap="showScreen" data-index="1">
+            <text class="m-filter-name">{{filter1}}</text>
+            <image class="m-filter-image" src="../../images/array_down.png"></image>
         </view>
-        <view class="m-filter" bindtap="showScreen"  data-index="2">
-        <text class="m-filter-name">学科</text>
-        <image class="m-filter-image" src="../../images/array_down.png"></image>
+        <view class="m-filter" bindtap="showScreen" data-index="2">
+            <text class="m-filter-name">{{filter2}}</text>
+            <image class="m-filter-image" src="../../images/array_down.png"></image>
         </view>
     </view>
     <view class="navFloat" s-if="{{screenShow}}">
         <block s-for-index="idx" s-for="{{filterList}}">
-            <text class="u-btn br {{item.name == '小学'?'f-hover',''}}" bindtap="showList({{item}})">{{item.name}}}</text>
+            <text class="u-btn {{item.id==nianjiStlect||item.id==ceStlect||item.id===kemuStlect?'f-hover':''}}" bindtap="showList" data-index="{{item}}">{{item.name}}}</text>
         </block>
     </view>
     <view class="u-black-bg" s-if="{{screenShow}}" bindtap="hideScreen"></view>
 </view>
 
-<view class="u-line"/>
+<view class="u-line" />
 
-<view class="g-main-list">
-
+<view class="g-main-list" style="margin-top:{{listPaddingTop}}rpx;z-index:{{zindex}}" >
     <block s-for-index="idx" s-for="{{itemLists}}">
         <view class="m-list-cont" data-item="{{item}}" bindtap="gotomain">
             <image class="m-image" src="{{item.titlepic}}"></image>

@@ -15,10 +15,21 @@ Page({
         nianji: [],
         ce: [],
         kemu: [],
+        nianjiStlect: "",
+        ceStlect: "",
+        kemuStlect: "",
+        nianjiFilter: "",
+        ceFilter: "",
+        kemuFilter: "",
+        filter0:"年级",
+        filter1:"上下册",
+        filter2:"学科",
         filterList: [],
         showBackTop: false,
         loading: "加载中...",
         screenShow: false,
+        listPaddingTop:140,
+        zindex:99, //列表页的层级
     },
     onInit(res) {
         var pageNumberString = res.pageNumber;
@@ -39,12 +50,12 @@ Page({
             this.getListDatas();
     },
     onLoad(res) {
-
+        console.log("gotomain --- 123");
     },
     onShow() {
     },
     gotomain(res) {
-        console.log("gotomain --- ", res)
+        console.log("gotomain --- ", res);
         var id = res.currentTarget.dataset.item.id;
         var title = res.currentTarget.dataset.item.title;
         swan.navigateTo({
@@ -53,7 +64,7 @@ Page({
     },
     loadMore: function () { //加载更多
         this.data.pageNum++;
-        if (this.data.keyword != "" && this.data.keyword != "undefined" && this.data.keyword != null) {
+        if (this.data.keyword) {
             this.getSearchDatas();
         } else {
             this.getNavDatas();
@@ -64,7 +75,6 @@ Page({
             this.hideScreen()
             return
         }
-
         let index = e.currentTarget.dataset.index
         var filterList2 = []
         if (index == 0) {
@@ -76,14 +86,59 @@ Page({
         }
         this.setData({
             screenShow: true,
-            filterList: filterList2
+            filterList: filterList2,
+            zindex:5,
         })
+    },
+    showList: function (e) {
+        var that = this;
+        console.log("showList ", e)
+        let index = e.currentTarget.dataset.index
+        if (index.type == "nianji") {
+            that.setData({
+                nianjiStlect: index.id,
+                filter0:index.name
+            })
+            if (index.name == "全部") {
+                this.data.nianjiFilter = ""
+            } else {
+                this.data.nianjiFilter = index.id
+            }
+        } else if (index.type == "ce") {
+            that.setData({
+                ceStlect: index.id,
+                filter1:index.name
+            })
+            if (index.name == "全部") {
+                this.data.ceFilter = ""
+            } else {
+                this.data.ceFilter = index.id
+            }
+        } else if (index.type == "kemu") {
+            that.setData({
+                kemuStlect: index.id,
+                filter2:index.name
+            })
+            if (index.name == "全部") {
+                this.data.kemuFilter = ""
+            } else {
+                this.data.kemuFilter = index.id
+            }
+        }
+        that.data.pageNum = 1
+        that.data.itemLists = []
 
-
+        if (that.data.keyword != "" && that.data.keyword != "undefined" && that.data.keyword != null) {
+            that.getSearchDatas();
+        } else {
+            that.getNavDatas();
+        }
+        this.hideScreen()
     },
     hideScreen: function () {  //隐藏筛选
         this.setData({
             screenShow: false,
+            zindex:99,
         })
     },
     getListDatas: function () {  //初始化数据
@@ -97,36 +152,48 @@ Page({
     getSearchDatas: function () {
         var that = this;
         console.log("http", `url=${config.apiList.baseUrl} action=${"search"} keyword=${that.data.keyword} page=${that.data.pageNum}`)
+        var params = {
+            action: "search",
+            keyword: that.data.keyword,
+            page: that.data.pageNum
+        }
+        if (that.data.nianjiFilter) {
+            params.nianji = that.data.nianjiFilter
+        }
+        if (that.data.ceFilter) {
+            params.ce = that.data.ceFilter
+        }
+        if (that.data.kemuFilter) {
+            params.kemu = that.data.kemuFilter
+        }
         swan.request({
             url: config.apiList.baseUrl,
             method: 'GET',
             dataType: 'json',
-            data: {
-                action: "search",
-                keyword: that.data.keyword,
-                page: that.data.pageNum
-            },
+            data: params,
             success: function (res) {
                 console.log("http", "getSearchDatas", res.data);
-                if (res.data == null) {
-                    if (that.data.pageNum == 1) {
-                        that.setData({
-                            loading: "没有数据",
-                        })
-                    } else {
+                if (res && res.data && res.data.list) {
+                    let list = res.data.list
+                    if(list.length < 10){
                         that.setData({
                             loading: "没有更多了",
                         })
                     }
-                }
-                if (res && res.data && res.data.list) {
-
-                    var list = res.data.list
                     for (let index = 0; index < list.length; index++) {
                         list[index].newstime = that.switchTime(list[index].newstime);
                     }
 
-                    that.data.itemLists = that.data.itemLists.concat(list);
+                    that.data.itemLists = [...that.data.itemLists, ...list]
+
+                    if (that.data.nianjiStlect == "" && that.data.ceStlect == "" && that.data.kemuStlect == "") {
+                        that.setData({
+                            nianjiStlect: res.data.cate.nianji[0].id,
+                            ceStlect: res.data.cate.ce[0].id,
+                            kemuStlect: res.data.cate.kemu[0].id,
+                            listPaddingTop:70
+                        })
+                    }
                     that.setData({
                         itemLists: that.data.itemLists,
                         nianji: res.data.cate.nianji,
@@ -138,12 +205,18 @@ Page({
                         titlepics.push(titlepic)
                     }
                     that.setPageInfoData(titlepics, res.data.site)
+                } else {
+                    if (that.data.pageNum == 1) {
+                        that.setData({
+                            itemLists:{},
+                            loading: "没有数据",
+                        })
+                    } else {
+                        that.setData({
+                            loading: "没有更多了",
+                        })
+                    }
                 }
-                if (!res || !res.data || !res.data.list || res.data.list.length < 10) {
-                    that.setData({
-                        loading: "没有更多了",
-                    })
-                };
             },
             fail: function (err) {
                 console.log('错误码：' + err.errCode);
@@ -168,23 +241,67 @@ Page({
     },
     getNavDatas: function () {
         var that = this;
-        console.log("http getNavDatas ", `url=${config.apiList.baseUrl} action=${"cate"} cate_id=${that.data.pageNumber} page=${that.data.pageNum}`)
+
+        var params = {
+            action: "cate",
+            cate_id: that.data.pageNumber,
+            page: that.data.pageNum
+        }
+        if (that.data.nianjiFilter) {
+            params.nianji = that.data.nianjiFilter
+        }
+        if (that.data.ceFilter) {
+            params.ce = that.data.ceFilter
+        }
+        if (that.data.kemuFilter) {
+            params.kemu = that.data.kemuFilter
+        }
+
         swan.request({
             url: config.apiList.baseUrl,
             method: 'GET',
             dataType: 'json',
-            data: {
-                action: "cate",
-                cate_id: that.data.pageNumber,
-                page: that.data.pageNum
-            },
+            data: params,
             success: function (res) {
-
                 console.log("getNavDatas res.data", res.data);
+                if (res && res.data && res.data.list) {
+                    let list = res.data.list
+                    if(list.length < 10){
+                        that.setData({
+                            loading: "没有更多了",
+                        })
+                    }
+                    // that.data.itemLists = that.data.itemLists.concat(list);
 
-                if (res.data == null) {
+                    for (let index = 0; index < list.length; index++) {
+                        list[index].newstime = that.switchTime(list[index].newstime);
+                    }
+
+                    if (that.data.nianjiStlect == "" && that.data.ceStlect == "" && that.data.kemuStlect == "") {
+                        that.setData({
+                            nianjiStlect: res.data.cate.nianji[0].id,
+                            ceStlect: res.data.cate.ce[0].id,
+                            kemuStlect: res.data.cate.kemu[0].id,
+                        })
+                    }
+
+                    that.data.itemLists = [...that.data.itemLists, ...list]
+
+                    that.setData({
+                        itemLists: that.data.itemLists,
+                        nianji: res.data.cate.nianji,
+                        ce: res.data.cate.ce,
+                        kemu: res.data.cate.kemu,
+                    })
+                    for (var itemNew of res.data.list) {
+                        const titlepic = itemNew.titlepic;
+                        titlepics.push(titlepic)
+                    }
+                    that.setPageInfoData(titlepics, res.data.site)
+                } else {
                     if (that.data.pageNum == 1) {
                         that.setData({
+                            itemLists:{},
                             loading: "没有数据",
                         })
                     } else {
@@ -193,47 +310,6 @@ Page({
                         })
                     }
                 }
-
-                if (res.data != null && res.data != undefined && res.data.list != null && res.data.list != undefined) {
-
-                    var list = res.data.list
-                    for (let index = 0; index < list.length; index++) {
-                        list[index].newstime = that.switchTime(list[index].newstime);
-                    }
-
-                    // var nianji = []
-                    // Object.keys(res.data.cate.nianji).forEach(key => {
-                    //     nianji.push({
-                    //         id: key,
-                    //         name: res.data.cate.nianji[key]
-                    //     })
-                    // })
-                    // res.data.cate.nianji = nianji
-
-                    // console.log("nianji " + res.data.cate.nianji)
-                    // for (let index = 0; index < nianji.length; index++) {
-                    //     console.log(nianji[index].id)
-                    //     console.log(nianji[index].name)
-                    // }
-
-                    console.log("nianji ", res.data.cate.nianji)
-                    console.log("ce ", res.data.cate.ce)
-                    console.log("kemu ", res.data.cate.kemu)
-
-                    that.data.itemLists = that.data.itemLists.concat(list);
-                    that.setData({
-                        itemLists: that.data.itemLists,
-                        nianji: res.data.cate.nianji,
-                        ce: res.data.cate.ce,
-                        kemu: res.data.cate.kemu,
-                    })
-                }
-
-                for (var itemNew of res.data.list) {
-                    const titlepic = itemNew.titlepic;
-                    titlepics.push(titlepic)
-                }
-                that.setPageInfoData(titlepics, res.data.site)
             },
             fail: function (err) {
                 console.log('错误码：' + err.errCode);

@@ -65,6 +65,8 @@
     font-weight: bold;
 }
 
+
+
 .g-main-list {
     width: 100%;
     height: auto;
@@ -191,7 +193,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 120;
+    z-index: 10;
 }
 
 .g-filter {
@@ -218,10 +220,10 @@
 
 .navFloat .u-btn {
     padding: 8rpx 0 8rpx 0;
-    margin: 0 7rpx 16rpx 7rpx ;
+    margin: 0 7rpx 16rpx 7rpx;
     width: 155rpx;
     height: 50rpx;
-    line-height: 45rpx;
+    line-height: 50rpx;
     font-size: 26rpx;
     font-weight: normal;
     color: #333;
@@ -229,16 +231,18 @@
     display: inline;
     overflow: hidden;
     text-align: center;
-    line-height: 40rpx;
     border-style: solid;
     border-width: 1rpx;
-    border-radius:4px;
+    border-radius: 4px;
     border-color: #DDDDDD;
 }
 
-.br {
-    color: royalblue;
+
+.navFloat .f-hover {
+    border-color: #f00;
+    background: #FFF3F3;
 }
+
 
 .u-black-bg {
     width: 100%;
@@ -250,8 +254,4 @@
     left: 0;
     top: 0;
     z-index: 0;
-}
-
-.g-main-list {
-    padding-top: 140rpx;
 }
