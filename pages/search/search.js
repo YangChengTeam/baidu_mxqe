@@ -4,7 +4,7 @@ var config = require('../../js/config')
 Page({
     data: {
         pageName: "搜索", //搜索页面名称
-        keyword: "", //搜索关键词
+        keyword: "寒假作业", //搜索关键词
         hotsearchData: [],//热门搜索
     },
     onInit(res) {
@@ -18,11 +18,11 @@ Page({
     onShow() {
         swan.setPageInfo({
             title: 'pages/search/search',
-            // keywords: 'XXXX',  
-            // description: 'XXXXX',  
-            // image: [  
-            //     'XXXXX'  
-            // ]  
+            // keywords: 'XXXX',
+            // description: 'XXXXX',
+            // image: [
+            //     'XXXXX'
+            // ]
         })
     },
     //输入关键词
@@ -34,7 +34,7 @@ Page({
     //跳转列表
     gotosearchlist(res) {
         var keyword = this.data.keyword; //搜索关键词
-        console.log(this.data.keyword)
+        console.log("keyword ", this.data.keyword)
         if (keyword == '') {
             swan.showToast({
                 title: '请输入关键词',
@@ -49,6 +49,11 @@ Page({
     //热门搜索跳转
     hotgoin(res) {
         var key = res.currentTarget.dataset.val
+
+        this.setData({
+            keyword: key
+        })
+
         swan.navigateTo({
             url: '/pages/list/list?pageName=' + this.data.pageName + '&keyword=' + key
         });
