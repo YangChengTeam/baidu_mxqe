@@ -24,15 +24,13 @@
     overflow: hidden;
 }
 .g-search-bigbox .g-search-box input {
-    width: auto;
+    width: 70%;
     height: 80rpx;
     line-height: 80rpx;
     font-size: 30rpx;
     font-weight: normal;
     color: #333;
     display: block;
-    overflow: hidden;
-    -webkit-box-flex: 1;
 }
 .g-search-bigbox .u-search-btn {
     width: auto;

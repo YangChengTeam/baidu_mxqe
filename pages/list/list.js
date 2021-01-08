@@ -29,7 +29,7 @@ Page({
         loading: "加载中...",
         screenShow: false,
         listPaddingTop:140,
-        zindex:99, //列表页的层级
+        floatNavHeight:"auto", //列表页的层级
     },
     onInit(res) {
         var pageNumberString = res.pageNumber;
@@ -87,7 +87,7 @@ Page({
         this.setData({
             screenShow: true,
             filterList: filterList2,
-            zindex:5,
+            floatNavHeight:"100%",
         })
     },
     showList: function (e) {
@@ -138,7 +138,7 @@ Page({
     hideScreen: function () {  //隐藏筛选
         this.setData({
             screenShow: false,
-            zindex:99,
+            floatNavHeight:"auto",
         })
     },
     getListDatas: function () {  //初始化数据

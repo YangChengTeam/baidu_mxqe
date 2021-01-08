@@ -27,9 +27,7 @@ Page({
     },
     //输入关键词
     inputKey(res) {
-        this.setData({
-            keyword: res.detail.value
-        })
+        this.data.keyword = res.detail.value;
     },
     //跳转列表
     gotosearchlist(res) {
@@ -40,7 +38,7 @@ Page({
                 title: '请输入关键词',
                 icon: 'none'
             });
-            return false;
+            return ;
         }
         swan.navigateTo({
             url: '/pages/list/list?pageName=' + this.data.pageName + '&keyword=' + this.data.keyword

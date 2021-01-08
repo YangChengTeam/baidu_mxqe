@@ -1,8 +1,7 @@
 <view class="g-search-bigbox">
 	<view class="g-search-box">
 		<image src="/images/icon-1.png" class="u-icon"></image>
-		<input value="{{keyword}}" placeholder="请输入你想查询的关键字" bindinput="inputKey" bindblur="inputKey"
-			bindconfirm="inputKey" />
+		<input value="{= keyword =}" maxlength="20"  placeholder="请输入你想查询的关键字" bindinput="inputKey" />
 	</view>
 	<view class="u-search-btn" bindtap="gotosearchlist">搜索</view>
 </view>

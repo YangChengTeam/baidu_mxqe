@@ -84,6 +84,7 @@
     height: 55rpx;
     display: flex;
     flex-direction: row;
+    background:#fff;
 }
 
 .u-line {

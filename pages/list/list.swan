@@ -1,4 +1,4 @@
-<view class="g-fixed-nav">
+<view class="g-fixed-nav" style="height:{{floatNavHeight}}">
     <nav pageName="{{pageName}}" keyword="{{keyword}}" pageNumber="{{pageNumber}}" bindsendParentSearch="receiveData">
     </nav>
     <view class="g-filter">
@@ -25,7 +25,7 @@
 
 <view class="u-line" />
 
-<view class="g-main-list" style="margin-top:{{listPaddingTop}}rpx;z-index:{{zindex}}" >
+<view class="g-main-list" style="margin-top:{{listPaddingTop}}rpx;" >
     <block s-for-index="idx" s-for="{{itemLists}}">
         <view class="m-list-cont" data-item="{{item}}" bindtap="gotomain">
             <image class="m-image" src="{{item.titlepic}}"></image>
