@@ -42,7 +42,7 @@ Page({
 
         this.showMyLoading();
         this.getCmsmainData();
-        this.showMyFavoriteGuide();
+        // this.showMyFavoriteGuide();
 
         // this.getOpenid()
     },
@@ -117,7 +117,7 @@ Page({
                     return;
                 }
                 var contentData = base64.base64_decode(res.data.content);
-                console.log("contentData ",contentData);
+                console.log("contentData ", contentData);
                 console.log("res.data.inWeek ", res.data.inWeek == 0 || false);
                 console.log("res.data", res.data);
 
@@ -133,13 +133,24 @@ Page({
                     })
                 }
                 var contentString = bdParse.bdParse('article', 'html', contentData, that, 5);
+
+                var list = res.data.list
+                for (let index = 0; index < list.length; index++) {
+                    if (list[index].images.length < 2) {
+                        list[index].images[1] = list[index].images[0]
+                    }
+                    if (list[index].images.length < 3) {
+                        list[index].images[2] = list[index].images[0]
+                    }
+                }
+
                 that.setData({
                     content: contentString,
                     title: res.data.title,
                     column: res.data.column,
                     writer: res.data.writer,
                     newDate: res.data.time.substring(0, 10),
-                    itemRecommends: res.data.list,
+                    itemRecommends: list,
                     itemRelated: res.data.list2,
                     recommendTitle: "更多推荐",
                     relatedTitle: "猜你喜欢",
@@ -215,7 +226,7 @@ Page({
 
                                     title: that.data.commentParam.title,
                                 },
-                                isParamOk:true,
+                                isParamOk: true,
                             });
                             console.log("commentParam2 ", that.data.commentParam)
                             console.log("isParamOk ", that.data.isParamOk)
