@@ -241,7 +241,6 @@ Page({
     },
     getNavDatas: function () {
         var that = this;
-
         var params = {
             action: "cate",
             cate_id: that.data.pageNumber,
@@ -256,6 +255,8 @@ Page({
         if (that.data.kemuFilter) {
             params.kemu = that.data.kemuFilter
         }
+
+        console.log("params",that.data.pageNumber+" nianji "+that.data.nianjiFilter+" ce "+that.data.ceFilter+" kemu "+that.data.kemuFilter)
 
         swan.request({
             url: config.apiList.baseUrl,

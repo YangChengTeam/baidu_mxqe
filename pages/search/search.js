@@ -4,7 +4,7 @@ var config = require('../../js/config')
 Page({
     data: {
         pageName: "搜索", //搜索页面名称
-        keyword: "寒假作业", //搜索关键词
+        keyword: "", //搜索关键词
         hotsearchData: [],//热门搜索
     },
     onInit(res) {

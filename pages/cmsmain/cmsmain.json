@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "文章详情"
+    "navigationBarTitleText": "答案圈·文章",
+    "usingSwanComponents": {
+        "comment-list": "dynamicLib://oneStopInteractionLib/comment-list"
+    }
 }

@@ -12,20 +12,14 @@ Page({
         column: "",
         recommendTitle: "",
         relatedTitle: "",
-        itemRecommends: [
-
-        ],
+        itemRecommends: [],
         ellipsis: true, // 文字是否收起，默认收起
         isBindEllipsis: false,
         isInWeek: true,
         isParamOk: false,
         isShowSkeleton: false,
-        commentParam: {
-            openid: '',
-            snid: '190707',
-            path: '',
-            title: '测试文章标题',
-        }
+        commentParam: {},
+        toolbarConfig: {},
     },
     /**
    * 收起/展开按钮点击事件
@@ -137,10 +131,10 @@ Page({
                 var list = res.data.list
                 for (let index = 0; index < list.length; index++) {
                     if (list[index].images.length < 2) {
-                        list[index].images[1] = list[index].images[0]
+                        list[index].images[1] = "/images/default_icon.jpg"
                     }
                     if (list[index].images.length < 3) {
-                        list[index].images[2] = list[index].images[0]
+                        list[index].images[2] = "/images/default_icon.jpg"
                     }
                 }
 
@@ -156,15 +150,7 @@ Page({
                     relatedTitle: "猜你喜欢",
                     isInWeek: res.data.inWeek == 0 || false,
                     isShowSkeleton: true,
-                    commentParam: {
-                        title: res.data.title,
-
-                        openid: that.data.commentParam.openid,
-                        snid: that.data.commentParam.snid,
-                        path: that.data.commentParam.path,
-                    }
                 })
-                console.log("commentParam233", that.data.commentParam)
                 swan.setPageInfo({
                     title: res.data.title,
                     keywords: res.data.keywords,
@@ -179,6 +165,7 @@ Page({
                 })
                 swan.hideLoading();
 
+                that.getOpenid()
             },
             fail: function (err) {
                 console.log('错误码：' + err.errCode);
@@ -210,8 +197,8 @@ Page({
                         // client_id = AppKey, sk = AppSecret
                         // client_id: '你的AppKey', // eslint-disable-line
                         //  sk: '你的AppSecret'
-                        client_id: 'OBjgupux7OxplyprS6M5I1HGwxYsjOry', // eslint-disable-line
-                        sk: '1RKFXv3kCgq8itAR8ItYpQ3Xq7GoPGzK'
+                        client_id: 'kKfaiMc6apvdkoRm06Dyp84FBIvQYGOx', // eslint-disable-line
+                        sk: 'Ux81AfLlBSk5fDyo8SmRP4rf387LHogt'
                     },
                     success: res => {
                         var that = this
@@ -222,12 +209,20 @@ Page({
                                 commentParam: {
                                     openid: res.data.openid,
                                     snid: that.data.id,
-                                    path: '/extensions/component/smt-interaction/smt-interaction?snid=' + that.data.id,
-
-                                    title: that.data.commentParam.title,
+                                    path: '/pages/cmsmain/cmsmain?id=' + that.data.id,
+                                    title: that.data.title,
+                                    images: that.data.images,
+                                },
+                                toolbarConfig: {
+                                    share: {
+                                        title: that.data.title,
+                                    },
+                                    moduleList: ['comment', 'like', 'favor', 'share'],
+                                    placeholder: "回复评论"
                                 },
                                 isParamOk: true,
                             });
+
                             console.log("commentParam2 ", that.data.commentParam)
                             console.log("isParamOk ", that.data.isParamOk)
                             // this.setData('isParamOk', true);

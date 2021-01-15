@@ -11,9 +11,13 @@
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "智能小程序",
         "backgroundTextStyle": "light"
-    },"dynamicLib": {
+    },
+    "dynamicLib": {
         "swan-sitemap-lib": {
             "provider": "swan-sitemap"
+        },
+        "oneStopInteractionLib": {
+            "provider": "swan-interaction"
         }
     }
 }
