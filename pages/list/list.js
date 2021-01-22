@@ -21,15 +21,15 @@ Page({
         nianjiFilter: "",
         ceFilter: "",
         kemuFilter: "",
-        filter0:"年级",
-        filter1:"上下册",
-        filter2:"学科",
+        filter0: "年级",
+        filter1: "上下册",
+        filter2: "学科",
         filterList: [],
         showBackTop: false,
-        loading: "加载中...",
+        loading: "数据努力加载中...",
         screenShow: false,
-        listPaddingTop:140,
-        floatNavHeight:"auto", //列表页的层级
+        listPaddingTop: 140,
+        floatNavHeight: "auto", //列表页的层级
     },
     onInit(res) {
         var pageNumberString = res.pageNumber;
@@ -87,7 +87,7 @@ Page({
         this.setData({
             screenShow: true,
             filterList: filterList2,
-            floatNavHeight:"100%",
+            floatNavHeight: "100%",
         })
     },
     showList: function (e) {
@@ -97,7 +97,7 @@ Page({
         if (index.type == "nianji") {
             that.setData({
                 nianjiStlect: index.id,
-                filter0:index.name
+                filter0: index.name
             })
             if (index.name == "全部") {
                 this.data.nianjiFilter = ""
@@ -107,7 +107,7 @@ Page({
         } else if (index.type == "ce") {
             that.setData({
                 ceStlect: index.id,
-                filter1:index.name
+                filter1: index.name
             })
             if (index.name == "全部") {
                 this.data.ceFilter = ""
@@ -117,7 +117,7 @@ Page({
         } else if (index.type == "kemu") {
             that.setData({
                 kemuStlect: index.id,
-                filter2:index.name
+                filter2: index.name
             })
             if (index.name == "全部") {
                 this.data.kemuFilter = ""
@@ -138,7 +138,7 @@ Page({
     hideScreen: function () {  //隐藏筛选
         this.setData({
             screenShow: false,
-            floatNavHeight:"auto",
+            floatNavHeight: "auto",
         })
     },
     getListDatas: function () {  //初始化数据
@@ -175,7 +175,7 @@ Page({
                 console.log("http", "getSearchDatas", res.data);
                 if (res && res.data && res.data.list) {
                     let list = res.data.list
-                    if(list.length < 10){
+                    if (list.length < 10) {
                         that.setData({
                             loading: "没有更多了",
                         })
@@ -191,7 +191,7 @@ Page({
                             nianjiStlect: res.data.cate.nianji[0].id,
                             ceStlect: res.data.cate.ce[0].id,
                             kemuStlect: res.data.cate.kemu[0].id,
-                            listPaddingTop:70
+                            listPaddingTop: 70
                         })
                     }
                     that.setData({
@@ -208,7 +208,7 @@ Page({
                 } else {
                     if (that.data.pageNum == 1) {
                         that.setData({
-                            itemLists:{},
+                            itemLists: {},
                             loading: "没有数据",
                         })
                     } else {
@@ -256,7 +256,7 @@ Page({
             params.kemu = that.data.kemuFilter
         }
 
-        console.log("params",that.data.pageNumber+" nianji "+that.data.nianjiFilter+" ce "+that.data.ceFilter+" kemu "+that.data.kemuFilter)
+        console.log("params", that.data.pageNumber + " nianji " + that.data.nianjiFilter + " ce " + that.data.ceFilter + " kemu " + that.data.kemuFilter)
 
         swan.request({
             url: config.apiList.baseUrl,
@@ -267,13 +267,11 @@ Page({
                 console.log("getNavDatas res.data", res.data);
                 if (res && res.data && res.data.list) {
                     let list = res.data.list
-                    if(list.length < 10){
+                    if (list.length < 10) {
                         that.setData({
                             loading: "没有更多了",
                         })
                     }
-                    // that.data.itemLists = that.data.itemLists.concat(list);
-
                     for (let index = 0; index < list.length; index++) {
                         list[index].newstime = that.switchTime(list[index].newstime);
                     }
@@ -302,7 +300,7 @@ Page({
                 } else {
                     if (that.data.pageNum == 1) {
                         that.setData({
-                            itemLists:{},
+                            itemLists: {},
                             loading: "没有数据",
                         })
                     } else {
@@ -319,21 +317,14 @@ Page({
         });
     },
     setPageInfoData(titlepics, sites) {
-        var title = this.data.keyword;
-        var keywords = this.data.keyword;
-        var description = this.data.keyword;
-        if (sites != null && sites != undefined) {
-            title = sites.title;
-            keywords = sites.sitekey;
-            description = sites.siteintro;
-        }
+        console.log("sites2 ", sites)
         swan.setPageInfo({
+            title: sites.title,
             image: titlepics,
-            title: title,
-            keywords: keywords,
-            description: description,
+            keywords: sites.sitekey,
+            description: sites.siteintro,
             success: function () {
-                console.log('setPageInfo success sites.title: ' + sites.title + " keywords :" + sites.sitekey || this.data.keyword);
+                console.log('setPageInfo success sites.title: ' + sites.title  + " keywords :" + sites.sitekey || this.data.keyword);
             },
             fail: function (err) {
                 console.log('setPageInfo fail', err);
@@ -371,7 +362,6 @@ Page({
         var that = this;
         console.log(123, res)
         that.setData({
-            loading: "加载中...",
             pageNum: 1,
             keyword: res.detail.searchValue,
         })

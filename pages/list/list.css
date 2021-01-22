@@ -171,15 +171,16 @@
     overflow: hidden;
 }
 
+
 .u-loading-text {
     width: 100%;
     height: auto;
-    padding: 30rpx 0;
+    padding: 60rpx 0;
     text-align: center;
     font-size: 28rpx;
     font-weight: normal;
     color: #888;
-    display: flex;
+    display: block;
     overflow: hidden;
 }
 

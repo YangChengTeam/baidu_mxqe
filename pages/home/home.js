@@ -169,8 +169,9 @@ Page({
         });
     },
     setPageInfoData(titlepics, sites) {
+        console.log("sites",sites)
         swan.setPageInfo({
-          title: sites.title != undefined && sites.title != null,
+          title: sites.title ,
             image: titlepics,
             keywords: sites.sitekey,
             description: sites.siteintro,

@@ -36,7 +36,6 @@ Page({
 
         this.showMyLoading();
         this.getCmsmainData();
-        // this.showMyFavoriteGuide();
 
         // this.getOpenid()
     },
@@ -46,21 +45,6 @@ Page({
     onReady() {
     },
     onShow() {
-    },
-    showMyFavoriteGuide: function () {
-        swan.showFavoriteGuide({
-            type: 'bar',
-            content: '一键关注小程序',
-            success: res => {
-                console.log('关注成功：', res);
-            },
-            fail: err => {
-                console.log('关注失败：', err);
-            }
-        })
-    },
-    swiperChange(e) {
-        console.log('swiperChange:', e);
     },
     showMyLoading: function () {
         swan.showLoading({
@@ -86,9 +70,7 @@ Page({
             url: config.apiList.baseUrl,
             data: {
                 action: "detail",
-                // id: that.data.id,
                 id: that.data.id,
-                // id: 159720,
             },
             success: function (res) {
                 console.log("netData data", res.data);
@@ -168,8 +150,7 @@ Page({
                 that.getOpenid()
             },
             fail: function (err) {
-                console.log('错误码：' + err.errCode);
-                console.log('错误信息：' + err.errMsg);
+                console.log('错误码：' , err.errCode+" "+ err.errMsg);
             }
         });
 
@@ -222,10 +203,6 @@ Page({
                                 },
                                 isParamOk: true,
                             });
-
-                            console.log("commentParam2 ", that.data.commentParam)
-                            console.log("isParamOk ", that.data.isParamOk)
-                            // this.setData('isParamOk', true);
                         }
                     },
                     fail: function (err) {

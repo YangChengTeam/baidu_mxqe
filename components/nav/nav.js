@@ -63,7 +63,6 @@ Component({
     //跳转搜索,如果是搜索页面，则不跳转
     gotosearch(res) {
         console.log(res)
-        // console.log("nav pageName ", this.data.pageName)
         if (this.data.pageName != '搜索') {
             swan.navigateTo({
                 url: '/pages/search/search'

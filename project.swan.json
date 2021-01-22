@@ -7,11 +7,11 @@
     },
     "host": "baiduboxapp",
     "preview": {
-        "packageId": 1030728
+        "packageId": 1037847
     },
     "projectname": "baidu_mxqe",
     "publish": {
-        "version": "1.0.1"
+        "version": "1.0.4"
     },
     "setting": {
         "urlCheck": false

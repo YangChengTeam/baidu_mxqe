@@ -1,4 +1,3 @@
-<!--components/w-back-top/v-back-top.wxml-->
 <view class='back-top'>
   <image src="/images/top.png"/>
 </view>

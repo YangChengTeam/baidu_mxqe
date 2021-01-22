@@ -1,3 +1,4 @@
+ <image class="g-skeleton" hidden='{{isShowSkeleton}}' src="/images/cmsmain_Skeleton.png" }}"></image>
  <swan-sitemap-list
         list-data="{{listData}}"
         current-page="{{currentPage}}"
