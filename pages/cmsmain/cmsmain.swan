@@ -10,6 +10,8 @@
     <template is="bdParse" data="{{ {bdParseData:article.nodes} }}" />
     <!-- 这是透明背景，完全显示的时候，隐藏这个-->
     <view class="{{ellipsis?'u-bg':'u-bg-ellipsis'}}"></view>
+
+    <view class="g-unfold" hidden='{{isBindEllipsis}}}'></view>
 </view>
 <!-- 显示更多按钮，点击展开后，添加class：“f-hover”，让箭头变上 -->
 <view class="{{ellipsis?'g-main-btn':'g-main-btn-ellipsis'}} " hidden='{{isBindEllipsis}}}' bindtap='ellipsis'>

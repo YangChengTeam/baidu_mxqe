@@ -6,6 +6,7 @@ Page({
         totalPage: 1,
         currentPage: 0,
         // path: '/swan-sitemap/index/index'
+        path: "/swan-sitemap/index/index",
         isShowSkeleton: false,
     },
 
@@ -51,10 +52,10 @@ Page({
                     listData: resData.list,
                     totalPage: resData.totalPage,
                     currentPage: resData.currentPage,
+                    path:that.data.path
                 });
                 swan.hideLoading();
             }
-
         });
     }
 });

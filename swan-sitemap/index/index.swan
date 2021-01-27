@@ -3,5 +3,5 @@
         list-data="{{listData}}"
         current-page="{{currentPage}}"
         total-page="{{totalPage}}"
-        path="/swan-sitemap/index/index">
+        path="{{path}}">
     </swan-sitemap-list>

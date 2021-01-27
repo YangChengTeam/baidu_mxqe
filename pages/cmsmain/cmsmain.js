@@ -27,7 +27,7 @@ Page({
     ellipsis: function () {
         var value = !this.data.ellipsis;
         this.setData({
-            ellipsis: value,
+            ellipsis: false,
             isBindEllipsis: true
         })
     },
