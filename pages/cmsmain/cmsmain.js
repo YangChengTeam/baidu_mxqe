@@ -113,10 +113,10 @@ Page({
                 var list = res.data.list
                 for (let index = 0; index < list.length; index++) {
                     if (list[index].images.length < 2) {
-                        list[index].images[1] = "/images/default_icon.jpg"
+                        list[index].images[1] = res.data.file
                     }
                     if (list[index].images.length < 3) {
-                        list[index].images[2] = "/images/default_icon.jpg"
+                        list[index].images[2] = res.data.file
                     }
                 }
 
@@ -150,7 +150,7 @@ Page({
                 that.getOpenid()
             },
             fail: function (err) {
-                console.log('错误码：' , err.errCode+" "+ err.errMsg);
+                console.log('错误码：', err.errCode + " " + err.errMsg);
             }
         });
 

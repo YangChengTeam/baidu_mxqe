@@ -34,6 +34,9 @@
                 <text class="m-time">{{item.newstime}}}</text>
                 <text class="m-desp">{{item.smalltext}}}</text>
             </view>
+                   <view class="m-list-cont2" s-if="{{(idx+1)%6==0}}">
+         <ad appid="a7b5439b" apid="7411184" class="ad" type="feed" ></ad>
+        </view>
         </view>
     </block>
 

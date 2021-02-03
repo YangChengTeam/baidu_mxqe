@@ -19,16 +19,19 @@
     <view class="u-icon"></view>
 </view>
 
-<!-- <view class="g-recomd-box">
+<view class="g-recomd-box">
     <view class="u-line"/>
 	<text class="u-h3">{{relatedTitle}}}</text>
-</view> -->
+    <ad appid="a7b5439b" apid="7411185" class="ad" type="feed" ></ad>
+    <ad appid="a7b5439b" apid="7411185" class="ad" type="feed" ></ad>
+</view>
 
 
 <view class="g-recomd-box">
     <view class="u-line" />
     <text class="u-h3">{{recommendTitle}}}</text>
     <view s-for-index="idx" s-for="{{itemRecommends}}">
+     <ad s-if="{{(idx)%2==0}}" appid="a7b5439b" apid="7411186" class="ad" type="feed" ></ad>
         <view class="m-cont" data-item="{{item}}" bindtap='gotomain'>
             <text>{{item.title}}}</text>
             <view class="m-imag">
@@ -38,6 +41,7 @@
             </view>
         </view>
     </view>
+    <ad appid="a7b5439b" apid="7411186" class="ad" type="feed" ></ad>
 </view>
 <view>
     <!-- 评论列表组件 -->
