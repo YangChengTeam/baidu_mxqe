@@ -98,16 +98,16 @@ Page({
                 console.log("res.data", res.data);
 
                 // 当前时间戳
-                var newstimeOut = res.data.newstime * 1000 + 1209600000  //新闻两周过期
-                var currenttimes = Date.parse(new Date());   //当前时间戳
-                console.log("time  stamp", currenttimes);
-                console.log("newstimeNum", newstimeOut)
-                if (newstimeOut > currenttimes) {
-                    that.setData({
-                        ellipsis: false,
-                        isBindEllipsis: true,
-                    })
-                }
+                // var newstimeOut = res.data.newstime * 1000 + 1209600000  //新闻两周过期
+                // var currenttimes = Date.parse(new Date());   //当前时间戳
+                // console.log("time  stamp", currenttimes);
+                // console.log("newstimeNum", newstimeOut)
+                // if (newstimeOut > currenttimes) {
+                //     that.setData({
+                //         ellipsis: false,
+                //         isBindEllipsis: true,
+                //     })
+                // }
                 var contentString = bdParse.bdParse('article', 'html', contentData, that, 5);
 
                 var list = res.data.list

@@ -5,7 +5,6 @@ Page({
         listData: [],
         totalPage: 1,
         currentPage: 0,
-        // path: '/swan-sitemap/index/index'
         path: "/swan-sitemap/index/index",
         isShowSkeleton: false,
     },
