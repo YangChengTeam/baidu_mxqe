@@ -37,9 +37,9 @@
 
             </view>
         </view>
-        <!-- <view class="m-list-cont2" s-if="{{(idx+1)%5==0}}">
+        <view class="m-list-cont2" s-if="{{(idx+1)%5==0}}">
             <ad appid="a7b5439b" apid="7411184" class="ad" type="feed"></ad>
-        </view> -->
+        </view>
     </block>
 
 </view>

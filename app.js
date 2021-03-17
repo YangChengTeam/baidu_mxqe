@@ -10,5 +10,6 @@ App({
     onShow(options) {
     },
     onHide() {
-    }
+    },
+    "useSwanNews": true
 });
