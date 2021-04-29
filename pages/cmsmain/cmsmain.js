@@ -17,6 +17,7 @@ Page({
         isBindEllipsis: false,
         isInWeek: true,
         isParamOk: false,
+        showComment:true,
         isShowSkeleton: false,
         commentParam: {},
         toolbarConfig: {},
@@ -46,6 +47,25 @@ Page({
     },
     onShow() {
     },
+    initComment(){
+        var that = this;
+        that.setData({
+            commentParam: {
+                snid: that.data.id,
+                path: '/pages/cmsmain/cmsmain?id=' + that.data.id,
+                title: that.data.title,
+                images: that.data.images,
+            },
+            toolbarConfig: {
+                share: {
+                    title: that.data.title,
+                },
+                moduleList: ['comment', 'like', 'favor', 'share'],
+                placeholder: "回复评论"
+            },
+            showComment:false
+        });
+    },
     showMyLoading: function () {
         swan.showLoading({
             title: '页面加载中...',
@@ -71,6 +91,7 @@ Page({
             data: {
                 action: "detail",
                 id: that.data.id,
+                // id: 20613,
             },
             success: function (res) {
                 console.log("netData data", res.data);
@@ -111,14 +132,17 @@ Page({
                 var contentString = bdParse.bdParse('article', 'html', contentData, that, 5);
 
                 var list = res.data.list
-                for (let index = 0; index < list.length; index++) {
-                    if (list[index].images.length < 2) {
-                        list[index].images[1] = res.data.file
-                    }
-                    if (list[index].images.length < 3) {
-                        list[index].images[2] = res.data.file
+                if(list){
+                    for (let index = 0; index < list.length; index++) {
+                        if (list[index].images.length < 2) {
+                            list[index].images[1] = res.data.file
+                        }
+                        if (list[index].images.length < 3) {
+                            list[index].images[2] = res.data.file
+                        }
                     }
                 }
+
 
                 that.setData({
                     content: contentString,
@@ -147,7 +171,8 @@ Page({
                 })
                 swan.hideLoading();
 
-                that.getOpenid()
+                // that.getOpenid()
+                that.initComment();
             },
             fail: function (err) {
                 console.log('错误码：', err.errCode + " " + err.errMsg);
