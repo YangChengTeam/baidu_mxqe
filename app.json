@@ -6,6 +6,7 @@
         "pages/search/search",
         "swan-sitemap/index/index"
     ],
+    "useSwanNews": true,
     "window": {
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTextStyle": "black",
