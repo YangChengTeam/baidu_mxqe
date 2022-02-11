@@ -49,7 +49,7 @@ Component({
         var path = res.currentTarget.dataset.nav.path;
         var name = res.currentTarget.dataset.nav.name;
         var pageNumber = res.currentTarget.dataset.nav.pageNumber;
-        swan.redirectTo({
+        swan.navigateTo({
             // swan.redirectTo({
             url: path + '?path=' + path + '&pageName=' + name + '&pageNumber=' + pageNumber,
             success: function () {
@@ -60,6 +60,7 @@ Component({
             }
         });
     },
+
     //跳转搜索,如果是搜索页面，则不跳转
     gotosearch(res) {
         console.log(res)

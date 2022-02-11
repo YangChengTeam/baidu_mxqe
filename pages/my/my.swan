@@ -1,0 +1,40 @@
+<view class="container">
+    <!--to do-->
+    <view class="top-divider"></view>
+    <view class="top-user-info">
+
+        <image class="user-icon" src="{{pic}}"></image>
+
+        <view class="user-info-container">
+            <text class="user-nickname" bindtap="login">{{nickName}}</text>
+            <view class="user-info-edit" hidden>
+                <text>{{desc}}</text>
+                <view class="btn-edit">+ 编辑资料</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="action-container">
+
+        <view class="service-container" bindtap="copyService">
+            <image src="../../images/service.png" class="service-img"></image>
+            <text class="service-text">反馈邮箱：{{qq}}</text>
+            <image src="../../images/right-arrow.png" class="arrow-img"></image>
+        </view>
+        <view class="like-container" bindtap="toLove" hidden>
+            <view class="pic-bg">
+                <image class="heart-pic" src="../../images/heart.png"></image>
+
+            </view>
+            <text class="action-text">我的喜欢</text>
+        </view>
+        <view class="collect-container" bindtap="toCollect" hidden>
+            <view class="pic-bg">
+                <image class="heart-pic" src="../../images/star.png"></image>
+
+            </view>
+            <text class="action-text">我的收藏</text>
+        </view>
+    </view>
+    <login bindmyevent="listener" bindcloseevent="close" show="{{show}}"></login>
+</view>

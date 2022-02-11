@@ -10,7 +10,7 @@ Page({
         pageName: "",
         pageNumber: "", //导航
         keyword: '',
-        pageNum: 1,  //分页
+        pageNum: 1, //分页
         itemLists: [],
         nianji: [],
         ce: [],
@@ -42,18 +42,18 @@ Page({
             pageNameString = "彩妆"
         }
         console.log("pageName ", res.pageName + " pageNumber " + res.pageNumber + " keyword " + res.keyword)
+        // eslint-disable-next-line no-unused-expressions
         this.setData({
-            pageName: pageNameString,
-            pageNumber: pageNumberString,
-            keyword: res.keyword,
-        }),
+                pageName: pageNameString,
+                pageNumber: pageNumberString,
+                keyword: res.keyword,
+            }),
             this.getListDatas();
     },
     onLoad(res) {
         console.log("gotomain --- 123");
     },
-    onShow() {
-    },
+    onShow() {},
     gotomain(res) {
         console.log("gotomain --- ", res);
         var id = res.currentTarget.dataset.item.id;
@@ -70,7 +70,7 @@ Page({
             this.getNavDatas();
         }
     },
-    showScreen: function (e) {  //显示筛选
+    showScreen: function (e) { //显示筛选
         if (this.data.screenShow) {
             this.hideScreen()
             return
@@ -135,13 +135,13 @@ Page({
         }
         this.hideScreen()
     },
-    hideScreen: function () {  //隐藏筛选
+    hideScreen: function () { //隐藏筛选
         this.setData({
             screenShow: false,
             floatNavHeight: "auto",
         })
     },
-    getListDatas: function () {  //初始化数据
+    getListDatas: function () { //初始化数据
         var that = this;
         if (that.data.keyword != "" && that.data.keyword != "undefined" && that.data.keyword != null) {
             that.getSearchDatas();
@@ -200,11 +200,13 @@ Page({
                         ce: res.data.cate.ce,
                         kemu: res.data.cate.kemu,
                     })
-                    for (var itemNew of res.data.list) {
-                        const titlepic = itemNew.titlepic;
-                        titlepics.push(titlepic)
+                    if (titlepics.length == 0) {
+                        for (var itemNew of res.data.list) {
+                            const titlepic = itemNew.titlepic;
+                            titlepics.push(titlepic)
+                        }
+                        that.setPageInfoData(titlepics, res.data.site)
                     }
-                    that.setPageInfoData(titlepics, res.data.site)
                 } else {
                     if (that.data.pageNum == 1) {
                         that.setData({
@@ -233,13 +235,14 @@ Page({
         var minute = dateTime.getMinutes();
         var second = dateTime.getSeconds();
         var now = new Date();
-        var now_new = Date.parse(now.toDateString());  //typescript转换写法
+        var now_new = Date.parse(now.toDateString()); //typescript转换写法
         var milliseconds = now_new - dateTime;
         var timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
         return timeSpanStr;
 
     },
     getNavDatas: function () {
+
         var that = this;
         var params = {
             action: "cate",
@@ -292,11 +295,15 @@ Page({
                         ce: res.data.cate.ce,
                         kemu: res.data.cate.kemu,
                     })
-                    for (var itemNew of res.data.list) {
-                        const titlepic = itemNew.titlepic;
-                        titlepics.push(titlepic)
+                    if (titlepics.length == 0) {
+
+
+                        for (var itemNew of res.data.list) {
+                            const titlepic = itemNew.titlepic;
+                            titlepics.push(titlepic)
+                        }
+                        that.setPageInfoData(titlepics, res.data.site)
                     }
-                    that.setPageInfoData(titlepics, res.data.site)
                 } else {
                     if (that.data.pageNum == 1) {
                         that.setData({
@@ -318,13 +325,16 @@ Page({
     },
     setPageInfoData(titlepics, sites) {
         console.log("sites2 ", sites)
+        if(sites==undefined){
+            return;
+        }
         swan.setPageInfo({
             title: sites.title,
             image: titlepics,
             keywords: sites.sitekey,
             description: sites.siteintro,
             success: function () {
-                console.log('setPageInfo success sites.title: ' + sites.title  + " keywords :" + sites.sitekey || this.data.keyword);
+                console.log('setPageInfo success sites.title: ' + sites.title + " keywords :" + sites.sitekey || this.data.keyword);
             },
             fail: function (err) {
                 console.log('setPageInfo fail', err);
@@ -332,14 +342,14 @@ Page({
         })
     },
     /**
- * 页面上拉触底事件的处理函数
- */
+     * 页面上拉触底事件的处理函数
+     */
     onReachBottom: function () {
         this.loadMore();
     },
     /**
-    * 回到顶部
-    */
+     * 回到顶部
+     */
     onBackTop() {
         swan.pageScrollTo({
             scrollTop: 0,

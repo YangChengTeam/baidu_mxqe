@@ -1,5 +1,12 @@
+.g-swiper-box {
+    margin-top: 200rpx;
+}
+
 swan-swiper {
     height: 420rpx;
+    /* position: relative;
+    top: 200rpx; */
+
 }
 
 .g-swiper-box .m-swiper-cont .u-swiper-li {
@@ -9,12 +16,14 @@ swan-swiper {
     overflow: hidden;
     position: relative;
 }
+
 .g-swiper-box .m-swiper-cont .u-swiper-li image {
     width: 750rpx;
     height: 420rpx;
     display: block;
     overflow: hidden;
 }
+
 .g-swiper-box .m-swiper-cont .u-swiper-li text {
     width: 100%;
     height: 145rpx;
@@ -23,13 +32,12 @@ swan-swiper {
     font-weight: normal;
     color: #fff;
     text-align: center;
-    background: -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, rgba(255, 255, 255, 0)),
-        color-stop(1, rgba(0, 0, 0, 0.7))
-    ); /*谷歌*/
+    background: -webkit-gradient(linear,
+            left top,
+            left bottom,
+            color-stop(0, rgba(255, 255, 255, 0)),
+            color-stop(1, rgba(0, 0, 0, 0.7)));
+    /*谷歌*/
     display: block;
     overflow: hidden;
     position: absolute;
@@ -47,6 +55,7 @@ swan-swiper {
     display: block;
     overflow: hidden;
 }
+
 .g-main-list .m-list-cont {
     width: 320rpx;
     height: auto;
@@ -56,12 +65,16 @@ swan-swiper {
     overflow: hidden;
 }
 
+
+
+
 .g-main-list .m-list-cont image {
     width: 320rpx;
     height: 260rpx;
     display: block;
     overflow: hidden;
 }
+
 .g-main-list .m-list-cont text {
     width: 100%;
     height: 70rpx;
@@ -73,6 +86,82 @@ swan-swiper {
     display: block;
     overflow: hidden;
 }
+
+.main-list-extra {
+    margin-top: 230rpx;
+    /* margin: 0 0 0; */
+    padding: 0 10rpx;
+    position: relative;
+}
+
+.main-list-extra .m-list-cont-extra {
+    width: 100%;
+    height: auto;
+    margin: 15rpx 0 0 30rpx;
+    display: flex;
+    flex-direction: row;
+}
+
+.main-list-extra .m-list-cont-extra .m-image {
+    width: 210rpx;
+    height: 260rpx;
+    overflow: hidden;
+}
+
+.main-list-extra .m-list-cont-extra .m-text {
+    width: 70%;
+    height: 260rpx;
+    overflow: hidden;
+}
+
+
+.main-list-extra .m-list-cont-extra .m-text .m-title {
+    width: auto;
+    height: 85rpx;
+    line-height: 43rpx;
+    font-size: 35rpx;
+    color: #333;
+    margin: 10rpx 35rpx 0 15rpx;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.main-list-extra .m-list-cont-extra .m-text .time-vip-container {
+    position: relative;
+    width: auto;
+
+    margin: 0 15rpx 0 15rpx;
+    display: flex;
+    align-items: center;
+}
+
+.main-list-extra .m-list-cont-extra .m-text .time-vip-container .m-time {
+    width: auto;
+    height: 38rpx;
+    line-height: 38rpx;
+    font-size: 27rpx;
+    margin-top: 10rpx;
+    font-weight: normal;
+    color: #A8A8A8;
+    display: flex;
+    overflow: hidden;
+}
+
+
+
+.main-list-extra .m-list-cont-extra .m-text .m-desp {
+    width: auto;
+    height: 70rpx;
+    line-height: 38rpx;
+    font-size: 27rpx;
+    font-weight: normal;
+    color: #A8A8A8;
+    margin: 20rpx 45rpx 0 15rpx;
+    display: flex;
+    overflow: hidden;
+}
+
 
 .u-loading-text {
     width: 100%;
@@ -96,9 +185,278 @@ swan-swiper {
     overflow: hidden;
 }
 
-.ad  {
+.ad {
     width: 100%;
     height: auto;
     top: 0;
     left: 0;
+}
+
+
+
+
+.g-search-box {
+    width: 670rpx;
+    height: auto;
+    margin: 18rpx auto 0;
+    background: #f8f8f8;
+    border-radius: 130rpx;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.g-search-box .u-icon {
+    width: 34rpx;
+    height: 32rpx;
+    margin: 24rpx 20rpx 0 20rpx;
+    display: block;
+    overflow: hidden;
+}
+
+.g-search-box input {
+    width: auto;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    font-weight: normal;
+    color: #333;
+    display: block;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+}
+
+.g-nav-box {
+    width: 100%;
+    height: auto;
+    padding: 30rpx 0 0;
+    box-sizing: border-box;
+    display: flex;
+    overflow: hidden;
+}
+
+.g-nav-box .u-nav-btn {
+    width: auto;
+    height: auto;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    flex: 1;
+}
+
+.g-nav-box .u-nav-btn text {
+    width: auto;
+    height: 54rpx;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    font-weight: normal;
+    color: #333;
+    border-bottom: 4rpx solid #fff;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.g-nav-box .u-nav-btn.f-hover text {
+    border-color: #E73C42;
+    color: #E73C42;
+    font-weight: bold;
+}
+
+
+
+
+
+
+.g-filter {
+    width: 100%;
+    margin: 10rpx 0;
+    height: 55rpx;
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+}
+
+.u-line {
+    width: 100%;
+    margin: 10rpx 0;
+    /* position: absolute;
+    top: 180rpx; */
+    height: 3rpx;
+    display: block;
+    background-color: #F5F5F5;
+    position: relative;
+}
+
+
+
+.g-filter .m-filter {
+    width: 33%;
+    text-align: center;
+}
+
+.g-filter .m-filter .m-filter-image {
+    width: 24rpx;
+    height: 24rpx;
+    overflow: hidden;
+}
+
+.g-filter .m-filter .m-filter-name {
+    font-size: 26rpx;
+    color: #333;
+}
+
+
+
+.g-main-list .m-list-cont .m-image {
+    width: 210rpx;
+    height: 260rpx;
+    overflow: hidden;
+}
+
+.g-main-list .m-list-cont .m-text {
+    width: 70%;
+    height: 260rpx;
+    overflow: hidden;
+}
+
+.g-main-list .m-list-cont .m-text .m-title {
+    width: auto;
+    height: 85rpx;
+    line-height: 43rpx;
+    font-size: 35rpx;
+    color: #333;
+    margin: 10rpx 35rpx 0 15rpx;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+.g-main-list .m-list-cont .m-text .m-time {
+    width: auto;
+    height: 38rpx;
+    line-height: 38rpx;
+    font-size: 27rpx;
+    font-weight: normal;
+    color: #A8A8A8;
+    margin: 10rpx 35rpx 0 15rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+.g-main-list .m-list-cont .m-text .m-desp {
+    width: auto;
+    height: 70rpx;
+    line-height: 38rpx;
+    font-size: 27rpx;
+    font-weight: normal;
+    color: #A8A8A8;
+    margin: 20rpx 45rpx 0 15rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+
+.u-loading-text {
+    width: 100%;
+    height: auto;
+    padding: 60rpx 0;
+    text-align: center;
+    font-size: 28rpx;
+    font-weight: normal;
+    color: #888;
+    display: block;
+    overflow: hidden;
+}
+
+
+
+/*修改*/
+.g-fixed-nav {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 180rpx;
+    z-index: 10;
+}
+
+.g-filter {
+    background: #fff;
+    margin: 0;
+    padding: 10rpx 0;
+    position: relative;
+    z-index: 10;
+}
+
+.navFloat {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 25rpx 31rpx;
+    z-index: 10;
+    background: #fff;
+}
+
+.navFloat .u-btn {
+    padding: 8rpx 0 8rpx 0;
+    margin: 0 7rpx 16rpx 7rpx;
+    width: 155rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 26rpx;
+    font-weight: normal;
+    color: #333;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    text-align: center;
+    border-style: solid;
+    border-width: 1rpx;
+    border-radius: 4px;
+    border-color: #DDDDDD;
+}
+
+
+.navFloat .f-hover {
+    border-color: #f00;
+    background: #FFF3F3;
+}
+
+
+.u-black-bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.item-pic-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.vip-class {
+    background: linear-gradient(to right, #FE982E 50%, rgb(252, 185, 115) 100%);
+    border-radius: 6rpx;
+    font-size: 20rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    padding: 0 10rpx;
+    color: #222222;
+    position: absolute;
+    top: 10rpx;
+    right: 10rpx;
 }

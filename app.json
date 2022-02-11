@@ -1,16 +1,35 @@
 {
     "pages": [
         "pages/home/home",
+        "pages/my/my",
         "pages/list/list",
         "pages/cmsmain/cmsmain",
         "pages/search/search",
         "swan-sitemap/index/index"
+
     ],
     "window": {
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTextStyle": "black",
         "navigationBarTitleText": "智能小程序",
         "backgroundTextStyle": "light"
+    },
+    "tabBar": {
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "color": "#9c9c9c",
+        "selectedColor": "#ff7290",
+        "list": [{
+            "pagePath": "pages/home/home",
+            "text": "首页",
+            "iconPath": "/images/home_no.png",
+            "selectedIconPath": "/images/home_sel.png"
+        },{
+            "pagePath": "pages/my/my",
+            "text": "我的",
+            "iconPath": "/images/my_no.png",
+            "selectedIconPath": "/images/my_sel.png"
+        }]
     },
     "dynamicLib": {
         "swan-sitemap-lib": {

@@ -17,19 +17,25 @@ Page({
         isBindEllipsis: false,
         isInWeek: true,
         isParamOk: false,
-        showComment:true,
+        showComment: true,
         isShowSkeleton: false,
         commentParam: {},
         toolbarConfig: {},
+        show: false
     },
     /**
-   * 收起/展开按钮点击事件
-   */
+     * 收起/展开按钮点击事件
+     */
     ellipsis: function () {
-        var value = !this.data.ellipsis;
+        // var value = !this.data.ellipsis;
+
+
+        // this.setData({
+        //     ellipsis: false,
+        //     isBindEllipsis: true
+        // })
         this.setData({
-            ellipsis: false,
-            isBindEllipsis: true
+            show: true
         })
     },
     onInit(res) {
@@ -43,11 +49,9 @@ Page({
     onLoad(res) {
 
     },
-    onReady() {
-    },
-    onShow() {
-    },
-    initComment(){
+    onReady() {},
+    onShow() {},
+    initComment() {
         var that = this;
         that.setData({
             commentParam: {
@@ -63,15 +67,14 @@ Page({
                 moduleList: ['comment', 'like', 'favor', 'share'],
                 placeholder: "回复评论"
             },
-            showComment:false
+            showComment: false
         });
     },
     showMyLoading: function () {
         swan.showLoading({
             title: '页面加载中...',
             mask: true,
-            success: function () {
-            },
+            success: function () {},
             fail: function (err) {
                 console.log('showLoading fail', err);
             }
@@ -84,14 +87,18 @@ Page({
     getCmsmainData: function () {
         var that = this;
         console.log("netData id:" + that.data.id);
-        console.log("netData url:" + that.data.id);
-        console.log("netData id:" + that.data.id);
+        let userInfo = app.globalData.userInfo
+        let isVip = 0;
+        if (userInfo) {
+            isVip = userInfo.is_vip
+        }
+
         swan.request({
             url: config.apiList.baseUrl,
             data: {
                 action: "detail",
                 id: that.data.id,
-                // id: 20613,
+
             },
             success: function (res) {
                 console.log("netData data", res.data);
@@ -117,6 +124,20 @@ Page({
                 console.log("contentData ", contentData);
                 console.log("res.data.inWeek ", res.data.inWeek == 0 || false);
                 console.log("res.data", res.data);
+                let is_sf = res.data.is_sf //是否收费 1收费 显示全部 2 免费 不显示全部
+                if (isVip == 1) {
+                    that.data.isBindEllipsis = true
+                    that.data.ellipsis = false
+                } else {
+                    if (is_sf == 1) {
+                        that.data.isBindEllipsis = false
+                        that.data.ellipsis = true
+                    } else {
+                        that.data.isBindEllipsis = true
+                        that.data.ellipsis = false
+                    }
+                }
+
 
                 // 当前时间戳
                 // var newstimeOut = res.data.newstime * 1000 + 1209600000  //新闻两周过期
@@ -132,7 +153,7 @@ Page({
                 var contentString = bdParse.bdParse('article', 'html', contentData, that, 5);
 
                 var list = res.data.list
-                if(list){
+                if (list) {
                     for (let index = 0; index < list.length; index++) {
                         if (list[index].images.length < 2) {
                             list[index].images[1] = res.data.file
@@ -156,6 +177,10 @@ Page({
                     relatedTitle: "猜你喜欢",
                     isInWeek: res.data.inWeek == 0 || false,
                     isShowSkeleton: true,
+                    isBindEllipsis: that.data.isBindEllipsis,
+                    ellipsis: that.data.ellipsis,
+                    article_id: res.data.id,
+                    class_id: res.data.class_id
                 })
                 swan.setPageInfo({
                     title: res.data.title,
@@ -163,8 +188,7 @@ Page({
                     description: res.data.description,
                     comments: res.data.comments,
                     image: res.data.images,
-                    success: function () {
-                    },
+                    success: function () {},
                     fail: function (err) {
                         console.log('setPageInfo fail', err);
                     }
@@ -189,54 +213,18 @@ Page({
             url: '/pages/cmsmain/cmsmain?id=' + id + '&title=' + title,
         });
     },
-    getOpenid() {
-        swan.login({
-            success: res => {
-                swan.request({
-                    url: 'https://spapi.baidu.com/oauth/jscode2sessionkey',
-                    method: 'POST',
-                    header: {
-                        'content-type': 'application/x-www-form-urlencoded'
-                    },
-                    data: {
-                        code: res.code,
-                        // client_id = AppKey, sk = AppSecret
-                        // client_id: '你的AppKey', // eslint-disable-line
-                        //  sk: '你的AppSecret'
-                        client_id: 'kKfaiMc6apvdkoRm06Dyp84FBIvQYGOx', // eslint-disable-line
-                        sk: 'Ux81AfLlBSk5fDyo8SmRP4rf387LHogt'
-                    },
-                    success: res => {
-                        var that = this
-                        console.log("netData getOpenid res ", res)
-                        if (res.statusCode == 200) {
-                            // 这里是使用获取到的用户openid
-                            that.setData({
-                                commentParam: {
-                                    openid: res.data.openid,
-                                    snid: that.data.id,
-                                    path: '/pages/cmsmain/cmsmain?id=' + that.data.id,
-                                    title: that.data.title,
-                                    images: that.data.images,
-                                },
-                                toolbarConfig: {
-                                    share: {
-                                        title: that.data.title,
-                                    },
-                                    moduleList: ['comment', 'like', 'favor', 'share'],
-                                    placeholder: "回复评论"
-                                },
-                                isParamOk: true,
-                            });
-                        }
-                    },
-                    fail: function (err) {
-                        console.log('getOpenid fail', err);
-                    }
-                });
-            }, fail: function (err) {
-                console.log('getOpenid fail 222', err);
-            }
-        });
+
+    close() {
+        this.setData({
+            show: false,
+        })
+    },
+    myevent() {
+        console.log("close")
+        this.setData({
+            show: false,
+            isBindEllipsis: true,
+            ellipsis: false,
+        })
     }
 })

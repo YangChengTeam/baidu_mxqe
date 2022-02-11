@@ -5,11 +5,20 @@
 
 
 App({
-    onLaunch(options) {
-    },
+    onLaunch(options) {},
     onShow(options) {
+        swan.getStorage({
+            key: 'userInfo',
+            success: res => {
+                let data = res.data
+                if (data) {
+                    console.log("log", data)
+                    this.globalData.userInfo = data
+                }
+            }
+        });
     },
-    onHide() {
-    },
+    onHide() {},
+    globalData: {},
     "useSwanNews": true
 });

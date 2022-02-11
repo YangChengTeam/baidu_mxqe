@@ -1,0 +1,38 @@
+<view class="container" s-if="{{show}}">
+    <view class="compont-container" />
+    <view class="content-container">
+        <text class="componet-title">开通VIP会员</text>
+        <!-- <text class="compent-vip-title">VIP</text> -->
+        <view class="vip-item-container">
+            <block s-for="{{goodsList}}" s-for-item="item">
+                <view class="vip-item vip-item-bg{{selectIndex==index?'-active':''}}" bindtap="selectVip"
+                    data-index="{{index}}">
+                    <text class="vip-item-name">{{item.name}}</text>
+                    <view class="vip-item-big-price-container">
+                        <label>¥</label><text class="vip-item-big-price">{{item.price}}</text>
+                    </view>
+
+                    <text class="vip-item-small-price">¥{{item.old_price}}</text>
+                </view>
+            </block>
+
+        </view>
+        <view class="vip-pay-conteiner">
+            <text class="vip-select-price">¥ {{selectPrice}}</text>
+
+            <!--  <image class="close-center" src="../../images/close_circle.png"></image>
+        <text class="content-text">您还未登录，请先授权登录后,{{tint}}</text> -->
+            <block s-if="{{userId!=''}}">
+                <button bindtap="openVip" class="btn">确认开通</button>
+            </block>
+            <block s-else>
+                <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="btn">确认开通</button>
+            </block>
+
+            <!-- <button open-type="login" bindlogin="login" class="btn">确认开通</button> -->
+        </view>
+        <image class="close-right" src="../../images/close.png" bindtap="close"></image>
+    </view>
+</view>
+
+<!--to do-->

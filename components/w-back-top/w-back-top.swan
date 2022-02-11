@@ -1,3 +1,3 @@
 <view class='back-top'>
-  <image src="/images/top.png"/>
+  <image src="/images/top.png" bindtap="back"/>
 </view>

@@ -1,30 +1,82 @@
-<nav pageName="{{pageName}}"></nav>
+<nav pageName="{{pageName}}" keyword="{{keyword}}" pageNumber="{{pageNumber}}" bindmyevent="listener"
+    bindsendParentSearch="receiveData" bindloadevent="index">
+</nav>
+<block s-if="{{showSwiper}}">
+    <view class="g-swiper-box">
+        <swiper autoplay="true" indicator-color="#fff" indicator-active-color="#f00b7e" duration="{{switchDuration}}"
+            interval="{{autoPlayInterval}}" autoplay="{{switchAutoPlayStatus}}"
+            indicator-dots="{{switchIndicateStatus}}" vertical="false" circular="true" current="0"
+            bind:change="swiperChange">
+            <block s-for="item in itemBanners">
+                <swiper-item bindtap='gotomain' data-item="{{item}}" class="m-swiper-cont">
+                    <view class="u-swiper-li">
+                        <image src="{{item.titlepic}}"></image>
+                        <text>{{item.title}}</text>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+</block>
 
-<view class="g-swiper-box">
-	<swiper autoplay="true" indicator-color="#fff" indicator-active-color="#f00b7e" duration="{{switchDuration}}"
-		interval="{{autoPlayInterval}}" autoplay="{{switchAutoPlayStatus}}" indicator-dots="{{switchIndicateStatus}}"
-		vertical="false" circular="true" current="0" bind:change="swiperChange">
-		<block s-for="item in itemBanners">
-			<swiper-item bindtap='gotomain' data-item="{{item}}" class="m-swiper-cont">
-				<view class="u-swiper-li">
-					<image src="{{item.titlepic}}"></image>
-					<text>{{item.title}}</text>
-				</view>
-			</swiper-item>
-		</block>
-	</swiper>
-</view>
-
-<view class="g-main-list">
-	<block s-for-index="idx"s-for="{{itemNews}}">
-		<view class="m-list-cont"   data-item="{{item}}" catchtap='gotomain' >
-			<image src="{{item.titlepic}}}"></image>
-			<text>{{item.title}}}</text>
-		</view>
-          <view class="m-list-cont2" s-if="{{(idx+1)%6==0}}">
-           <ad appid="a7b5439b" apid="7411183" class="ad" type="feed" ></ad>
+<block s-if="{{!showSwiper}}">
+    <view class="g-fixed-nav" style="height:{{floatNavHeight}}">
+        <view class="g-filter">
+            <view class="m-filter" bindtap="showScreen" data-index="0">
+                <text class="m-filter-name">{{filter0}}</text>
+                <image class="m-filter-image" src="../../images/array_down.png"></image>
+            </view>
+            <view class="m-filter" bindtap="showScreen" data-index="1">
+                <text class="m-filter-name">{{filter1}}</text>
+                <image class="m-filter-image" src="../../images/array_down.png"></image>
+            </view>
+            <view class="m-filter" bindtap="showScreen" data-index="2">
+                <text class="m-filter-name">{{filter2}}</text>
+                <image class="m-filter-image" src="../../images/array_down.png"></image>
+            </view>
         </view>
-	</block>
+        <view class="navFloat" s-if="{{screenShow}}">
+            <block s-for-index="idx" s-for="{{filterList}}">
+                <text class="u-btn {{item.id==nianjiStlect||item.id==ceStlect||item.id===kemuStlect?'f-hover':''}}"
+                    bindtap="showList" data-item="{{item}}">{{item.name}}}</text>
+            </block>
+        </view>
+        <view class="u-black-bg" s-if="{{screenShow}}" bindtap="hideScreen"></view>
+    </view>
+
+    <view class="u-line" />
+</block>
+
+<view class="g-main-list {{showSwiper?'':'main-list-extra'}}">
+
+    <block s-for-index="idx" s-for="{{itemNews}}">
+        <block s-if="{{showSwiper}}">
+            <view class="m-list-cont" data-item="{{item}}" catchtap='gotomain'>
+                <view class="item-pic-container">
+                    <image src="{{item.titlepic}}}" lazy-load></image>
+                    <view class="vip-class" s-if="{{item.is_sf==1}}">VIP</view>
+                </view>
+                <text>{{item.title}}}</text>
+            </view>
+        </block>
+        <block s-else>
+            <view class="m-list-cont-extra" data-item="{{item}}" bindtap="gotomain">
+                <image class="m-image" lazy-load src="{{item.titlepic}}"></image>
+                <view class="m-text">
+                    <text class="m-title">{{item.title}}}</text>
+                    <view class="time-vip-container">
+                        <text class="m-time">{{item.newstime}}}</text>
+                        <view class="vip-class" s-if="{{item.is_sf==1}}">VIP</view>
+                    </view>
+                    <text class="m-desp">{{item.smalltext}}}</text>
+                </view>
+            </view>
+        </block>
+        <view class="m-list-cont2" s-if="{{(idx+1)%6==0}}">
+            <ad appid="a7b5439b" apid="7411183" class="ad" type="feed"></ad>
+        </view>
+    </block>
+
 </view>
 <view class="u-loading-text">{{loading}}</view>
-<w-back-top bindtap="onBackTop" s-if="{{showBackTop}}" />
+<w-back-top bindbackevent="onBackTop" s-if="{{showBackTop}}" />

@@ -1,3 +1,6 @@
+<!-- <view class="list-container"> -->
+
+<!-- <view class="top" style="height:100rpx"></view> -->
 <view class="g-fixed-nav" style="height:{{floatNavHeight}}">
     <nav pageName="{{pageName}}" keyword="{{keyword}}" pageNumber="{{pageNumber}}" bindsendParentSearch="receiveData">
     </nav>
@@ -29,10 +32,13 @@
 <view class="g-main-list" style="margin-top:{{listPaddingTop}}rpx;">
     <block s-for-index="idx" s-for="{{itemLists}}">
         <view class="m-list-cont" data-item="{{item}}" bindtap="gotomain">
-            <image class="m-image" src="{{item.titlepic}}"></image>
+            <image class="m-image" lazy-load src="{{item.titlepic}}"></image>
             <view class="m-text">
                 <text class="m-title">{{item.title}}}</text>
-                <text class="m-time">{{item.newstime}}}</text>
+                <view class="time-vip-container">
+                    <text class="m-time">{{item.newstime}}}</text>
+                    <view class="vip-class" s-if="{{item.is_sf==1}}">VIP</view>
+                </view>
                 <text class="m-desp">{{item.smalltext}}}</text>
 
             </view>
@@ -45,3 +51,4 @@
 </view>
 <view class="u-loading-text">{{loading}}</view>
 <w-back-top bindtap="onBackTop" s-if="{{showBackTop}}" />
+<!-- </view> -->

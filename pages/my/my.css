@@ -1,0 +1,140 @@
+.top-divider {
+    width: 100%;
+    height: 0.5px;
+    background-color: #eeeeee
+}
+
+.top-user-info {
+    display: flex;
+    padding: 25rpx;
+}
+
+.user-icon {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 60rpx;
+}
+
+.user-info-container {
+    width: 81%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 25rpx;
+}
+
+.user-nickname {
+    font-size: 25px;
+    font-weight: 600;
+    color: black;
+}
+
+.user-info-edit {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.user-info-edit text {
+    font-size: 25rpx;
+    text-align: bottom;
+}
+
+.btn-edit {
+    /* width:200rpx; */
+    height: 40rpx;
+    border-radius: 20rpx;
+    border: 1px solid #e0e0e0;
+    font-size: 22rpx;
+    line-height: 40rpx;
+    position: absolute;
+    color: #333;
+    right: 0;
+    padding: 0 15rpx;
+}
+
+.action-container {
+    display: flex;
+    padding: 25rpx;
+    flex-direction: column;
+    margin-top: 15rpx;
+}
+
+/* .action-container::after {
+    width: 100%;
+    height: 1rpx;
+    background-color: rgb(209, 203, 203);
+    content: "";
+    bottom: 0;
+
+} */
+
+.like-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(60deg, #f2a2c9, #ed7897);
+    line-height: 100rpx;
+    height: 100rpx;
+    flex-grow: 1;
+    border-radius: 15rpx;
+}
+
+.collect-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(60deg, #b2d4fa, #99c1f8);
+    line-height: 100rpx;
+    height: 100rpx;
+    flex-grow: 1;
+    border-radius: 15rpx;
+    margin-left: 30rpx;
+}
+
+.pic-bg {
+    display: flex;
+    width: 60rpx;
+    height: 60rpx;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30rpx;
+    background-color: #ffffff;
+
+}
+
+.action-text {
+    font-size: 30rpx;
+    color: #ffffff;
+    margin-left: 30rpx;
+}
+
+.heart-pic {
+    width: 42rpx;
+    height: 42rpx;
+
+}
+
+.service-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.service-img {
+    width: 35rpx;
+    height: 35rpx;
+}
+
+.service-text {
+    font-size: 30rpx;
+    color: black;
+    margin-left: 15rpx;
+}
+
+.arrow-img {
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    right: 0rpx;
+}

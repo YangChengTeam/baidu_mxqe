@@ -3,8 +3,7 @@ Component({
         propName: {
             type: String,
             value: 'val',
-            observer: function(newVal, oldVal) {
-            }
+            observer: function (newVal, oldVal) {}
         }
     },
 
@@ -15,8 +14,10 @@ Component({
 
     methods: {
         onTap: function () {
-            this.setData({
-            });
+            this.setData({});
         },
+        back() {
+            this.triggerEvent('backevent')
+        }
     }
 });

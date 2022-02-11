@@ -1,0 +1,14 @@
+<view class="container" s-if="{{show}}">
+    <view class="compont-container" />
+    <view class="content-container">
+        <text class="componet-title">登录</text>
+        <image class="close-right" src="../../images/close.png" bindtap="close"></image>
+
+        <text class="content-text">为了给您提供更好的服务,请先授权登录{{tint}}</text>
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="btn" type="primary">登录授权</button>
+        <!-- <button open-type="login" bindlogin="login"  class="btn" type="primary">登录授权</button> -->
+    </view>
+</view>
+
+
+<!--to do-->

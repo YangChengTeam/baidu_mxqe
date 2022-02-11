@@ -19,32 +19,38 @@
     <view class="u-icon"></view>
 </view>
 
-<view class="g-recomd-box">
+<!--猜你喜欢-->
+<!-- <view class="g-recomd-box">
     <view class="u-line" />
-    <text class="u-h3">{{relatedTitle}}}</text>
+     <text class="u-h3">{{relatedTitle}}}</text>
     <ad appid="a7b5439b" apid="7411185" class="ad" type="feed"></ad>
     <ad appid="a7b5439b" apid="7411185" class="ad" type="feed"></ad>
-</view>
+</view> -->
 
 
 <view class="g-recomd-box">
     <view class="u-line" />
     <text class="u-h3">{{recommendTitle}}}</text>
     <view s-for-index="idx" s-for="{{itemRecommends}}">
-        <ad s-if="{{(idx)%2==0}}" appid="a7b5439b" apid="7411186" class="ad" type="feed"></ad>
+        <ad s-if="{{(idx)%3==0}}" appid="a7b5439b" apid="7411186" class="ad" type="feed"></ad>
         <view class="m-cont" data-item="{{item}}" bindtap='gotomain'>
-            <text>{{item.title}}}</text>
+            <view class="title-container">
+                <text>{{item.title}} </text>
+                <label class="vip-class" s-if="{{item.is_sf==1}}">VIP</label>
+            </view>
             <view class="m-imag">
-                <image src="{{item.images[0]}}}"></image>
-                <image src="{{item.images[1]}}}"></image>
-                <image src="{{item.images[2]}}}"></image>
+                <image src="{{item.images[0]}}}" lazy-load></image>
+                <image src="{{item.images[1]}}}" lazy-load></image>
+                <image src="{{item.images[2]}}}" lazy-load></image>
             </view>
         </view>
     </view>
-    <ad appid="a7b5439b" apid="7411186" class="ad" type="feed"></ad>
+    <!-- <ad appid="a7b5439b" apid="7411186" class="ad" type="feed"></ad> -->
 </view>
 <view>
     <!-- 评论列表组件 -->
     <comment-list comment-param="{{commentParam}}" toolbar-config="{{toolbarConfig}}" hidden="{{showComment}}">
     </comment-list>
 </view>
+<vip show="{{show}}" class_id="{{class_id}}" article_id="{{article_id}}" bindcloseevent="close" bindmyevent="myevent" />
+<!-- <login show="{{show}}" /> -->
