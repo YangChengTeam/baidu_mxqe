@@ -8,6 +8,7 @@
         "swan-sitemap/index/index"
 
     ],
+    "useSwanNews": true,
     "window": {
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTextStyle": "black",

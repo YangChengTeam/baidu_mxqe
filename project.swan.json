@@ -8,6 +8,7 @@
     "host": "baiduboxapp",
     "preview": {
         "packageId": 1171641
+
     },
     "projectname": "baidu_mxqe",
     "publish": {
@@ -15,7 +16,9 @@
             "小程序包内容将被百度解析和收录，用于内容的风险控制。",
             "您已开通分享web化，请确保分享web化体验无问题后，再进行发布。"
         ],
+
         "version": "1.0.16"
+
     },
     "setting": {
         "urlCheck": false
@@ -24,6 +27,7 @@
         "baiduboxapp": {
             "swanJsVersion": "3.320.32",
             "extensionJsVersion": "1.21.2"
+
         }
     }
 }
